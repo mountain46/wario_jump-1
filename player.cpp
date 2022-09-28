@@ -6,6 +6,10 @@ Player::Player()
 {
 	m_handle = -1;
 	m_fieldY = 0.0f;
+
+	m_isJumpUp = false;
+	m_isJumpDown = false;
+
 	m_isDead = false;
 }
 
@@ -34,6 +38,27 @@ void Player::update()
 	int padState = GetJoypadInputState(DX_INPUT_KEY_PAD1);
 	if (padState & PAD_INPUT_1)
 	{
+		m_isJumpUp = true;
+	}
+
+	if (m_isJumpUp)
+	{
+		m_pos.y -= 4.0f;
+		if (m_pos.y <= 64.0f)
+		{
+			m_isJumpUp = false;
+			m_isJumpDown = true;
+		}
+	}
+	else if(m_isJumpDown)
+	{
+		m_pos.y += 4.0f;
+		if (m_pos.y >= m_fieldY - m_graphSize.y)
+		{
+			m_pos.y = m_fieldY - m_graphSize.y;
+			m_isJumpUp = false;
+			m_isJumpDown = false;
+		}
 	}
 }
 
