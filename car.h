@@ -25,6 +25,23 @@ public:
 	Vec2 getSize() const { return m_size; }
 
 private:
+	typedef enum MoveType
+	{
+		kMoveTypeNormal,
+		kMoveTypeStop,
+		kMoveTypeJump,
+		kMoveTypeReturn,
+
+		kMoveTypeNum
+	} MoveType;
+
+private:
+	void updateNormal();	//まっすぐ進む
+	void updateStop();		//一時停止フェイント
+	void updateJump();		//ジャンプする
+	void updateReturn();	//途中で引き返す（必ず成功する）
+
+private:
 	// グラフィックハンドル
 	int m_handle;
 	// グラフィックの幅と高さ	当たり判定にも使用する
@@ -35,6 +52,10 @@ private:
 
 	// 位置
 	Vec2 m_pos;
+
+	//車の動き
+	MoveType m_moveType;
+	
 	// ベクトル
 	Vec2 m_vec;
 	// 地面の高さ
