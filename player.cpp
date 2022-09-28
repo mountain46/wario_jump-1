@@ -70,7 +70,7 @@ void Player::draw()
 	}
 	else
 	{
-		DrawGraphF(m_pos.x, m_pos.y, 0, 0, 128, 128 m_handle, true);
+		DrawGraphF(m_pos.x, m_pos.y, 0, 0, 128, 128, m_handle, true);
 	}
 }
 
