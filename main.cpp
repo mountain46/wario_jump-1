@@ -48,6 +48,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		player.update();
 		car.update();
 
+		//“–‚½‚è”»’è
 		if (player.isCol(car))
 		{
 			player.setDead(true);

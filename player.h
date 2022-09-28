@@ -47,8 +47,5 @@ private:
 	// ínñ ÇÃçÇÇ≥
 	float m_fieldY;
 
-	bool m_isJumpUp;
-	bool m_isJumpDown;
-
 	bool m_isDead;
 };
