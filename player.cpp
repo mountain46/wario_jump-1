@@ -58,7 +58,11 @@ void Player::update()
 	int padState = GetJoypadInputState(DX_INPUT_KEY_PAD1);
 	if (padState & PAD_INPUT_1)
 	{
-		m_vec.y = kJumpAcc; //ジャンプ開始
+		if (ifField)// 1回しかジャンプできなくする
+		{
+			m_vec.y = kJumpAcc; //ジャンプ開始
+		}
+		
 	}
 	m_vec.y += kGravity;
 }
