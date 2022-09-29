@@ -22,6 +22,7 @@ Car::Car()
 	m_handle = -1;
 	m_fieldY = 0.0f;
 	m_waitFrame = 0;
+	m_countTimer = 0;
 }
 
 void Car::setGraphic(int handle)
@@ -56,8 +57,6 @@ void Car::setup(float fieldY)
 	{
 		m_moveType = kMoveTypeReturn;
 	}
-
-	
 
 	//移動し始めるまでの時間を設定	1秒から3秒待つ	60フレームから180フレーム
 	m_waitFrame = GetRand(kWaitFrameMax - kWaitFrameMin) + kWaitFrameMin;
@@ -106,7 +105,19 @@ void  Car::updateNormal()
 //一時停止フェイント
 void  Car::updateStop()
 {
-	m_pos += m_vec;//仮
+	m_pos += m_vec;
+	if (m_pos.x <= Game::kScreenWidth /2)
+	{
+		m_vec.x = 0;
+
+		m_countTimer++;
+		if (m_countTimer > 20)
+		{
+			m_vec.x = kSpeed;
+		}
+	}
+
+
 }
 //ジャンプする
 void  Car::updateJump()
@@ -135,5 +146,9 @@ void  Car::updateJump()
 //途中で引き返す（必ず成功する）
 void  Car::updateReturn()
 {
-	m_pos += m_vec;//仮
+	m_pos += m_vec;
+	if (m_pos.x <= Game::kScreenWidth -150)
+	{
+		m_vec.x++;
+	}
 }

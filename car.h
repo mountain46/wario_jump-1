@@ -55,6 +55,8 @@ private:
 
 	//ŽÔ‚Ì“®‚«
 	MoveType m_moveType;
+
+	int m_countTimer;
 	
 	// ƒxƒNƒgƒ‹
 	Vec2 m_vec;
